@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.CoursesApp" parent="Theme.Material3.Dark.NoActionBar">
+
+        <item name="android:textColorPrimary">@color/white</item>
+
+    </style>
+</resources>

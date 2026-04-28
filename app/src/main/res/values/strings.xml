@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">CoursesApp</string>
+    <string name="bottom_nav_home_title">Главная</string>
+    <string name="bottom_nav_favorite_title">Избранное</string>
+    <string name="bottom_nav_account_title">Аккаунт</string>
+    <string name="login_headline">Вход</string>
+    <string name="login_label_email">Email</string>
+    <string name="login_hint_email">example@gmail.com</string>
+    <string name="login_label_password">Пароль</string>
+    <string name="login_hint_password">Введите пароль</string>
+    <string name="login_button">Вход</string>
+    <string name="login_text_no_account">Нет аккаунта?</string>
+    <string name="login_button_register">Регистрация</string>
+    <string name="login_button_forgot_password">Забыл пароль</string>
+</resources>
