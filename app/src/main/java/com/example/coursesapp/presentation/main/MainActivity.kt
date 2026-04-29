@@ -7,13 +7,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavHostController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.coursesapp.R
 import com.example.coursesapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 it.id == R.id.main_graph
             }
         }
-
+        binding.bottomNav.setOnItemReselectedListener {  }
         binding.bottomNav.setupWithNavController(navController)
     }
 }

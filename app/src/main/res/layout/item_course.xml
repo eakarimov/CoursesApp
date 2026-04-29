@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_course"
+    android:minHeight="236dp"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/ivCover"
+        android:layout_width="0dp"
+        android:layout_height="114dp"
+        android:background="@drawable/bg_cover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFavorite"
+        style="@style/Widget.App.Button"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/glass"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/selector_favorite"
+        app:iconSize="16dp"
+        app:iconTint="@null"
+        app:layout_constraintEnd_toEndOf="@+id/ivCover"
+        app:layout_constraintTop_toTopOf="@+id/ivCover" />
+
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_badge"
+        android:drawableStart="@drawable/ic_star"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:minHeight="22dp"
+        android:paddingHorizontal="6dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCover"
+        app:layout_constraintStart_toStartOf="@id/ivCover"
+        tools:text="4.9" />
+
+    <TextView
+        android:id="@+id/tvStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/bg_badge"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:minHeight="22dp"
+        android:paddingHorizontal="6dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRating"
+        app:layout_constraintStart_toEndOf="@+id/tvRating"
+        app:layout_constraintTop_toTopOf="@+id/tvRating"
+        tools:text="22 Мая 2024" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TextAppearance.App.TitleMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:minHeight="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCover"
+        tools:text="Java-разработчик с нуля" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/TextAppearance.App.BodySmall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:minHeight="32dp"
+        android:textColor="@color/white_70"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании." />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        style="@style/TextAppearance.App.TitleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:minHeight="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+        tools:text="999 ₽" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMore"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:includeFontPadding="false"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minHeight="16dp"
+        android:padding="0dp"
+        android:text="Подробнее"
+        android:textAppearance="@style/TextAppearance.App.Hint"
+        android:textColor="@color/green"
+        app:icon="@drawable/ic_arrow_right"
+        app:iconGravity="textEnd"
+        app:iconPadding="0dp"
+        app:iconSize="16dp"
+        app:iconTint="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

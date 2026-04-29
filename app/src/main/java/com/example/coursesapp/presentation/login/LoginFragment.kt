@@ -7,18 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.example.coursesapp.R
 import com.example.coursesapp.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private val emailRegex = Regex("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -32,6 +40,8 @@ class LoginFragment : Fragment() {
 
         setupView()
         setupListeners()
+
+        collectUiState()
     }
 
     override fun onDestroyView() {
@@ -50,11 +60,11 @@ class LoginFragment : Fragment() {
 
     private fun setupListeners() = with(binding) {
         etEmail.doAfterTextChanged {
-            updateLoginButtonState()
+            viewModel.onEmailChanged(it.toString())
         }
 
         etPassword.doAfterTextChanged {
-            updateLoginButtonState()
+            viewModel.onPasswordChanged(it.toString())
         }
 
         btnLogin.setOnClickListener {
@@ -76,11 +86,14 @@ class LoginFragment : Fragment() {
         )
     )
 
-    private fun updateLoginButtonState() {
-        val emailIsCorrect = binding.etEmail.text.toString().matches(emailRegex)
-        val passwordIsCorrect = binding.etPassword.text.isNotBlank()
-
-        binding.btnLogin.isEnabled = emailIsCorrect && passwordIsCorrect
+    private fun collectUiState() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { uiState ->
+                    binding.btnLogin.isEnabled = uiState.isLoginEnabled
+                }
+            }
+        }
     }
 
     private fun navigateToMain() {
