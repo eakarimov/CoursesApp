@@ -15,4 +15,6 @@
     <string name="home_searchbar_hint">Search courses...</string>
     <string name="home_button_sort">По дате добавления</string>
     <string name="course_price">%1$s ₽</string>
+
+    <string name="favorite_title">Избранное</string>
 </resources>

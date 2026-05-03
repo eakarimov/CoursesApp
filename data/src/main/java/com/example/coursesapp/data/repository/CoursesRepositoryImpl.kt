@@ -10,6 +10,14 @@ class CoursesRepositoryImpl @Inject constructor(
     private val api: ApiService
 ) : CoursesRepository {
 
-    override suspend fun getCourses(): List<Course> =
-        api.getCourses().courses.map { it.toCourse() }
+    var cachedCourses: List<Course>? = null
+
+    override suspend fun getCourses(): List<Course> {
+        cachedCourses?.let { return it }
+
+        val courses = api.getCourses().courses.map { it.toCourse() }
+        cachedCourses = courses
+
+        return courses
+    }
 }
